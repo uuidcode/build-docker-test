@@ -13,7 +13,7 @@ jobs:
         run: docker build . -f Dockerfile-api -t docker.pkg.github.com/uuidcode/build-docker-test/api:latest
 
       - name: login
-        run: docker login docker.pkg.github.com -u uuidcode -p 00a689f10797649130a8455ea2c7a66d52e545f1
+        run: docker login docker.pkg.github.com -u uuidcode -p a1ab35baf9c247c48278f28f37e80cb626625277
 
       - name: push
         run: docker push docker.pkg.github.com/uuidcode/build-docker-test/api:latest
