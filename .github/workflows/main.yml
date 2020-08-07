@@ -10,10 +10,10 @@ jobs:
         uses: actions/checkout@master  # 소스코드 checkout
 
       - name: Build the Docker image
-        run: docker build . -f Dockerfile-api -t docker.pkg.github.com/uuidcode/build-docker-test/api:v0.0.1
+        run: docker build . -f Dockerfile-api -t docker.pkg.github.com/uuidcode/build-docker-test/api:v0.0.4
 
       - name: login
-        run: docker login docker.pkg.github.com -u uuidcode -p cf95f4e1a70d551babd1aee048eebd9473c50580
+        run: docker login docker.pkg.github.com -u uuidcode -p d9f93df23e447f76092b98fefa7927f3fc4bf658
 
       - name: push
-        run: docker push docker.pkg.github.com/uuidcode/build-docker-test/api:v0.0.1
+        run: docker push docker.pkg.github.com/uuidcode/build-docker-test/api:v0.0.4
