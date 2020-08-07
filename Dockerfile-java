@@ -1,0 +1,23 @@
+FROM centos
+
+ARG testRoot=/test
+ARG programRoot=${testRoot}/program
+ARG javaTarFile=OpenJDK8U-jdk_x64_linux_hotspot_8u265b01.tar.gz
+ARG mavenTarFile=apache-maven-3.6.3-bin.tar.gz
+
+ENV JAVA_HOME ${programRoot}/java
+ENV MAVEN_HOME ${programRoot}/maven
+ENV PATH=${PATH}:${JAVA_HOME}/bin:${MAVEN_HOME}/bin
+
+RUN mkdir -p ${programRoot}
+WORKDIR ${programRoot}
+
+RUN curl -O -L https://github.com/AdoptOpenJDK/openjdk8-binaries/releases/download/jdk8u265-b01/${javaTarFile} && \
+    tar xfz ${javaTarFile} && \
+    ln -s jdk8u265-b01 java && \
+    rm ${javaTarFile}
+
+RUN curl -O -L http://apache.tt.co.kr/maven/maven-3/3.6.3/binaries/${mavenTarFile} && \
+    tar xfz ${mavenTarFile} && \
+    ln -s apache-maven-3.6.3 maven && \
+    rm ${mavenTarFile}

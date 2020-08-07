@@ -1,0 +1,12 @@
+FROM uuidcode/java
+ARG buildDir=/test/build
+
+RUN mkdir -p ${buildDir}
+
+ADD pom.xml ${buildDir}/pom.xml
+ADD src ${buildDir}/src
+
+WORKDIR ${buildDir}
+RUN mvn clean package
+
+ENTRYPOINT java -jar ${BRUNCH_JAVA_OPTION} target/build-docker-test-1.0-SNAPSHOT.jar > build-docker-test.out 2>&1
