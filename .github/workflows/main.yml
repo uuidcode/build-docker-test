@@ -21,4 +21,3 @@ jobs:
 
       - name: push
         run: docker push docker.pkg.github.com/uuidcode/build-docker-test/api:v0.0.4
-
